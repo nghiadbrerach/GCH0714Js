@@ -1,9 +1,9 @@
 function check(){
-    let name= document.getElementById('txtName').value;
+    let name = document.getElementById('txtName').value;
     if(name.length==0){
-    alert('hi');
-    return false;
-}else{
-    return true;
-}
-}
+        alert('Cant be empty!');
+        return false;
+    }else{
+        return true;
+    }
+ }

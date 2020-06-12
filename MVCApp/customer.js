@@ -2,12 +2,12 @@ const express = require('express');
 var router = express.Router();
 
 var MongoClient = require('mongodb').MongoClient;
-var url = 'mongodb+srv://vtrshu:Vtrshukun1@cluster1-4jh5j.mongodb.net/test';
+var url = 'mongodb+srv://binhdq:abc@123@cluster0-lkrga.mongodb.net/testmongodb://localhost:27017/';
 
 
 router.get('/',async (req,res)=>{
     let client= await MongoClient.connect(url);
-    let dbo = client.db("mydb");
+    let dbo = client.db("MyDb");
    
     let results = await dbo.collection("customers").find({}).toArray();
     res.render('allCustomer',{customers:results});
@@ -22,7 +22,7 @@ router.get('/delete',async (req,res)=>{
     var ObjectID = require('mongodb').ObjectID;
     let condition = {"_id" : ObjectID(id)};
     let client= await MongoClient.connect(url);
-    let dbo = client.db("mydb");
+    let dbo = client.db("MyDb");
     await dbo.collection("customers").deleteOne(condition);
     //
     let results = await dbo.collection("customers").find({}).toArray();
@@ -31,7 +31,7 @@ router.get('/delete',async (req,res)=>{
 
 router.post('/doInsert',async (req,res)=>{
     let client= await MongoClient.connect(url);
-    let dbo = client.db("mydb");
+    let dbo = client.db("MyDb");
     let nameValue = req.body.txtName;
     let addressValue = req.body.txtAddress;
     let newCustomer = {name : nameValue, address:addressValue};
